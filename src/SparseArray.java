@@ -52,5 +52,28 @@ public class SparseArray {
         for (int[] row : sparseArr) {
             System.out.printf("%d\t%d\t%d\t\n",row[0],row[1],row[2]);
         }
+
+        /**
+         * 稀疏数组转为二维数组
+         * 1、用稀疏数组的（0，0）和（0，1）两个值初始化二维数组
+         * 2、恢复二维素组的有效数据
+         */
+        int row = sparseArr[0][0];
+        int col = sparseArr[0][1];
+        int[][] chessArr2 = new int[row][col];//初始化二维数组
+
+        //恢复有效数据
+        for (int i=1;i<sparseArr.length;i++){
+            chessArr2[sparseArr[i][0]][sparseArr[i][1]] = sparseArr[i][2];
+        }
+
+        System.out.println("稀疏数组转为二维数组结果：");
+        for (int[] r : chessArr2) {
+            for (int data : r) {
+                System.out.printf("%d\t",data);
+            }
+            System.out.println();
+        }
+
     }
 }
