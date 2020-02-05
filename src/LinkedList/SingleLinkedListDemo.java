@@ -26,7 +26,11 @@ public class SingleLinkedListDemo{
         System.out.println("链表的长度为："+singleLinkedList.getLength(singleLinkedList.getHead()));
 
         System.out.println("获取倒数第1个节点");
-        System.out.println(SingleLinkedList.findLastIndexNode(singleLinkedList.getHead(), 2).toString());
+        System.out.println(SingleLinkedList.findLastIndexNode(singleLinkedList.getHead(), 3).toString());
+
+        System.out.println("--------------反转单向链表-------------------");
+        SingleLinkedList.reverse(singleLinkedList.getHead());
+        singleLinkedList.showNode();
     }
 }
 
@@ -98,7 +102,7 @@ class SingleLinkedList { // 定义单链表类
         HeroNode tmp = head;
         while (true){
             if (tmp.next == null){ //链表遍历结束
-
+                break;
             }
             if (tmp.next.no == node.no ){
                 node.next = tmp.next.next;
@@ -152,6 +156,10 @@ class SingleLinkedList { // 定义单链表类
     }
 
     //查找单链表中的倒数第k个节点【新浪面试题】
+    // 1、判断k是否合法
+    // 2、判断链表是否为空
+    // 3、获取链表长度
+    // 4、遍历链表，遍历到（length - k）位置即为倒数第k个节点
     public static HeroNode findLastIndexNode(HeroNode headNode,int index){
         if (headNode.next == null ){
             //throw new RuntimeException("链表为空");
@@ -159,7 +167,7 @@ class SingleLinkedList { // 定义单链表类
         }
         int length = SingleLinkedList.getLength(headNode);
         HeroNode tmp = headNode;
-        if (index > length){
+        if (index > length || index < 0){
             throw new RuntimeException("超过链表范围");
         }
         for (int i = 0; i < (length - index ); i++) {
@@ -168,6 +176,31 @@ class SingleLinkedList { // 定义单链表类
         return tmp.next;
     }
 
+    /**
+     * 单向链表的反转【腾讯面试题】
+     * 1、定义一个临时头节点 reverseHead，
+     * 2、依次遍历链表的每个节点cur，每次都把cur直接插入到reverseHead的后面
+     * 主要思路就是上面两步
+     * 3、定义一个临时节点next，用来指向cur的下一个节点
+     * 4、把cur插入到reverseHead后面后，cur可以通过next找到它原来的下一个节点，这样就可以继续遍历
+     * @param headNode
+     */
+    public static void reverse(HeroNode headNode){
+        if (headNode.next == null || headNode.next.next == null){//如果链表为空，或者链表只有一个节点就不反转
+            return;
+        }
+        HeroNode cur = headNode.next; // 用于指向当前节点
+        HeroNode reverseHead = new HeroNode(0,"","");//定义一个头节点，作为反转后链表的临时头节点
+        HeroNode next = null;// 指向当前节点的下一个节点
+
+        while (cur != null){ //如果当前节点不为null，就继续往下遍历
+            next = cur.next; // 先暂时保留当前节点的下一个节点
+            cur.next = reverseHead.next; // 把当前这个节点的next指向reverseHead节点后面的链表
+            reverseHead.next = cur; // 让reverseHead指向cur
+            cur = next;// 继续往下遍历
+        }
+        headNode.next = reverseHead.next; // 把reverseHead换成headNode指向
+    }
 }
 
 
