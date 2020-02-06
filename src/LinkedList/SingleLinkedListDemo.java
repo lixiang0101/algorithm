@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Stack;
+
 public class SingleLinkedListDemo{
     public static void main(String[] args) {
         HeroNode node1 = new HeroNode(0, "宋江", "及时雨");
@@ -31,6 +33,9 @@ public class SingleLinkedListDemo{
         System.out.println("--------------反转单向链表-------------------");
         SingleLinkedList.reverse(singleLinkedList.getHead());
         singleLinkedList.showNode();
+
+        System.out.println("\n--------------方向遍历单向链表-------------------");
+        SingleLinkedList.showReverse(singleLinkedList.getHead());
     }
 }
 
@@ -200,6 +205,26 @@ class SingleLinkedList { // 定义单链表类
             cur = next;// 继续往下遍历
         }
         headNode.next = reverseHead.next; // 把reverseHead换成headNode指向
+    }
+    /**
+     * 反向遍历链表，用栈的方式
+     * 先从头遍历把节点压入栈，然后再取出
+     * 也可以先反转链表，然后再遍历，但这样会破坏链表的结构，不推荐
+     */
+    public static void showReverse(HeroNode head){
+        if (head.next == null ){
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = head.next;
+        while (cur != null){
+            stack.push(cur); //当前节点压入到栈中
+            cur = cur.next;  //后移一位
+        }
+
+        while (stack.size()>0){ // 弹出
+            System.out.println(stack.pop());
+        }
     }
 }
 
