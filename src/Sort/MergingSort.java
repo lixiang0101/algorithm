@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 归并排序：将两个或者两个以上的有序表合并成一个有序表的过程
+ * 时间复杂度：O(nlogn) 最好最坏都一样，空间复杂度：O(1)
  */
 
 public class MergingSort {

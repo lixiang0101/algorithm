@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 /**
- * 快速排序：由冒泡排序改进而得
+ * 快速排序：由冒泡排序改进而得 时间复杂度：O(nlogn) 最好最坏都一样，空间复杂度：O(logn)
  * 1、在待排序的n个记录中任取一个记录（通常是第一个记录）作为枢轴（pivotKey）。
  * 2、经过一趟排序后，把所有关键字小于pivotKey的记录交换到前面，把所有大于关键字pivotKey的记录交换到后面，形成两个子表
  *    把pivotKey放在两个子表分解处的位置。
