@@ -1,5 +1,13 @@
 package HashTable;
 
+/**
+ * 存储员工信息hash表
+ * 1、每个员工都有一个唯一的id，根据员工id用"除模留余法"计算hash值
+ * 2、员工类，即链表的单个节点
+ * 3、员工链表，组成数组的元素
+ * 4、数组，hashTable
+ */
+
 public class HashTableDemo {
     public static void main(String[] args) {
         // 1、创建HashTable
