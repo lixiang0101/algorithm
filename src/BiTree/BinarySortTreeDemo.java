@@ -39,7 +39,7 @@ public class BinarySortTreeDemo {
         tree.inOrderTraverse();
 
         System.out.println("\n删除叶子结点");
-        tree.deleteNode(7);
+        tree.deleteNode(1);
         tree.inOrderTraverse();
     }
 
@@ -115,17 +115,25 @@ class BinarySortTree{
                 int minValue = deleteRightChildMinNode(targetNode.right);
                 targetNode.value = minValue;
             }else{ // 剩下的就是第2种情况，这是一种简便的写法
-                if (parentNode.left.value == value){ // 如果targetNode是parent的左子结点
-                    if (targetNode.left != null){ // 如果targetNode有左子树
-                        parentNode.left = targetNode.left;
-                    }else { // 如果targetNode有右子树
-                        parentNode.left = targetNode.right;
+                if (targetNode.left != null){ // 如果targetNode有左子结点
+                    if (parentNode != null){ // 如果target有父结点
+                        if (parentNode.left.value == value){ // 如果targetNode是parent的左子树
+                            parentNode.left = targetNode.left;
+                        }else {
+                            parentNode.right = targetNode.left;
+                        }
+                    }else{ // 如果targetNode没有父结点，即targetNode是root结点，且这个root结点只有左子树
+                        root = targetNode.left;
                     }
-                }else { // 如果targetNode是parent的右子结点
-                    if (targetNode.left != null){
-                        parentNode.right = targetNode.left;
-                    }else {
-                        parentNode.right = targetNode.right;
+                }else { // 如果targetNode有右子结点
+                    if (parentNode != null){
+                        if (parentNode.left.value == value){
+                            parentNode.left = targetNode.right;
+                        }else {
+                            parentNode.right = targetNode.right;
+                        }
+                    }else {// 如果targetNode没有父结点，即targetNode是root结点，且这个root结点只有右子树
+                        root = targetNode.right;
                     }
                 }
             }
