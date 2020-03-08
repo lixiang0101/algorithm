@@ -12,7 +12,7 @@ package BiTree;
  *  1）parent.left = null
  *  2) 或者 parent.right = null
  *
- * 第2种：删除只有一颗子树的结点
+ * 第2种：删除只有一颗子树的结点，要考虑root结点只有左子树或者只有右子树的情况，而要删除的这个结点正好是root结点
  * 1～3步和第1种情况一样
  * 4、如果targetNode有左子树：
  *  1）如果targetNode是parent的左子结点：parent.left = targetNode.left
