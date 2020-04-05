@@ -59,8 +59,6 @@ class AVLTree{
     public AVLTree() {
     }
 
-
-
     public void add(Node node){
         if (this.root == null){
             this.root = node;
@@ -83,7 +81,7 @@ class AVLTree{
 }
 
 /**
- * 根排序二叉树的结点一样，增加了一个求树高度的方法
+ * 跟排序二叉树的结点一样，增加了一个求树高度的方法
  */
 class Node{
     private int value;
@@ -175,10 +173,8 @@ class Node{
             if (this.right != null && this.right.leftHeight() > this.right.rightHeight()) {
                 // 如果有这种情况要先 在当前结点的右子树上进行左旋转
                 this.right.rightRotate();
-                leftRotate();
-            }else {
-                leftRotate();
             }
+            leftRotate();
             return; // 左旋转之后就退出，这个必须要！！！
         }
 
@@ -186,10 +182,8 @@ class Node{
             if (this.left != null && this.left.rightHeight() > this.left.leftHeight()) {
                 // 如果有这种情况要先 在当前结点的右子树上进行左旋转
                 this.left.leftRotate();
-                rightRotate();
-            }else {
-                rightRotate();
             }
+            rightRotate();
         }
     }
     public Node(int value){

@@ -43,10 +43,11 @@ public class SimpleSelectionSort {
     public static int[] simpleSelectionSort(int[] array) {
         int min;
         int minIndex;
+        //从第1个元素开始，在后面的无序列表中找到最小值，与第1个元素进行交换
         for (int i = 0; i < array.length; i++) {
             min = array[i];
             minIndex = i;
-            for (int j = i; j < array.length; j++) {
+            for (int j = i + 1; j < array.length; j++) {
                 if (array[j] < min) {
                     min = array[j];
                     minIndex = j;

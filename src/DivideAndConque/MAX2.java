@@ -88,7 +88,7 @@ public class MAX2 {
         }
 
         for (int i = low + 2; i < high; i++) { // 会循环n-2次
-            if (arr[i] > arr[x2]) { // 最好最坏这里都要比较一次
+            if (arr[i] > arr[x2]) { // 任何情况下这里都要比较一次
                 x2 = i;
                 if (arr[x2] > arr[x1]) { // 最坏情况，每次这里都返回true
                     int tmp = x1;

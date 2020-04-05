@@ -37,8 +37,9 @@ public class Queen8 {
             return;
         }
         for (int i = 0;i < 8;i++) {
-            array[n] = i;
-            if (judge(n)) { //如果与前面的皇后不冲突，然后放后面的皇后
+            array[n] = i; // i表示放在第几个位置
+            if (judge(n)) { //如果放在这个位置与前面的皇后不冲突，然后放后面的皇后，
+                // 否则调整当前位置，直到与前面的皇后不冲突才继续放下一个皇后
                 check(n + 1);
             }
         }

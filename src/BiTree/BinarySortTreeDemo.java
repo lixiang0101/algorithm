@@ -88,6 +88,10 @@ class BinarySortTree{
         return parent;
     }
 
+    /**
+     * BST删除结点操作
+     * @param value
+     */
     public void deleteNode(int value){
         if (this.root == null){
             return;

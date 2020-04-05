@@ -8,7 +8,7 @@ package QueueDemo;
 
 class CircleArrayQueue {
     private int maxSize; //数组的最大容量
-    private int front; //指向队列的头
+    private int front; //指向队列的头，初始值为0，和rear一起
     private int rear; //指向队列最后一个元素的后一个位置，因为希望空出一个空间做约定，所以rear的初始值为0
     private int[] arr; //用数组来模拟队列
 
@@ -20,7 +20,7 @@ class CircleArrayQueue {
 
     // 判断队列是否已满，如果rear位于队列尾，那么队列已满
     public boolean isFull(){
-        return ( rear + 1 ) % maxSize == front;
+        return ( rear + 1 ) % maxSize == front; // 加1是为了空出一个位置
     }
 
     // 判断队列是否为空

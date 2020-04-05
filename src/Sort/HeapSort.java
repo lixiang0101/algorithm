@@ -6,6 +6,16 @@ import java.util.Date;
 
 /**
  * 堆排序
+ * 完全二叉堆：
+ *  结构性：结构上满足一个完全二叉树
+ *  堆序性：一个父结点的值要大于其孩子结点的值（最大堆），反之最小堆
+ * 往一个完全二叉堆末尾插入一个元素，不会破坏结构性，但可能会破坏堆序性
+ * 如果破坏了堆序性，把这个结点与其父结点调换一下，这样就可以解决当前结点的堆序性问题
+ * 但这样同样可能造成父节点的堆序性问题，所以要一层一层的向上调整，直到根结点，这个过程称为"上滤"
+ * 因为完全二叉树的深度为 roundDown(logn) + 1
+ * 所以这个上滤过程的时间复杂度为 O(logn)
+ * 其实如果按上面的过程执行，每次上滤都有一次调换的过程，调换的过程会执行3条语句，这里是可以优化的
+ * 具体优化看heapAdjust方法的实现
  */
 
 public class HeapSort {
@@ -72,7 +82,7 @@ public class HeapSort {
      * @param n 需调整的数组中元素个数
      */
     public static void heapAdjust(int[] arr,int i,int n){
-        int tmp = arr[i]; // 把第1次调整的根记录下来
+        int tmp = arr[i]; // 把要调整的记录做一个备份
         for (int j = 2 * i + 1; j < n; j = j * 2 + 1){
             // 1、从arr[2*i+1]和arr[2*i+2] 中选出较大者
             if ( j + 1 < n && arr[j] < arr[j+1]){ // j + 1 < length 可以提高效率
@@ -87,6 +97,6 @@ public class HeapSort {
                 break;
             }
         }
-        arr[i] = tmp; // 调整结束
+        arr[i] = tmp; // 最后再将备份放到最终的位置，这是一个优化
     }
 }
