@@ -1,6 +1,7 @@
 package Recursion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 递归8皇后问题
@@ -19,11 +20,12 @@ public class Queen8 {
         Queen8 queen8 = new Queen8();
         queen8.check(0);
         System.out.printf("判段冲突的次数为%d",count);
+
     }
     public static int count = 0;
     /**
      * 放置第n个皇后的方法
-     * 1、把第n个皇后依次放在改行的每个位置，那么这个皇后有8种放法 array[n] = i
+     * 1、把第n个皇后依次放在第n行的每个位置，那么这个皇后有8种放法 array[n] = i
      * 2、每放在一个位置时都需要检查一下与前面的皇后是否发生冲突
      * 3、如果与前面的皇后没有冲突，那么继续放下一个皇后，直到放第9个皇后时执行print()方法，
      *    此时并没有结束，而是把当前皇后往后移动一个位置，继续判断。。。
@@ -32,7 +34,7 @@ public class Queen8 {
      * @param n
      */
     private void check(int n){
-        if (n == 8) { // 但检查到第9个皇后时，说明前8个皇后已经放好了
+        if (n == 8) { // n是从0开始的，到检查到第9个皇后时，说明前8个皇后已经放好了
             print();
             return;
         }

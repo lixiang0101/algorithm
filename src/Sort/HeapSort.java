@@ -79,7 +79,7 @@ public class HeapSort {
      *    如果以arr[2*i+1]为根的子树不是堆，则重复上述过程。将以arr[2*i+1]为根的子树调整为堆，直到进行到叶子结点为止。
      * @param arr 需调整的数组
      * @param i 调整的第i个子树
-     * @param n 需调整的数组中元素个数
+     * @param n 数组中元素个数
      */
     public static void heapAdjust(int[] arr,int i,int n){
         int tmp = arr[i]; // 把要调整的记录做一个备份

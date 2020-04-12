@@ -2,14 +2,14 @@ package Algorithm10;
 
 public class BinarySearchNoRecur {
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        int index = search(arr, 2);
+        int[] arr = {1,3,5,7,9};
+        int index = search(arr, 3);
         System.out.println(index);
     }
     public static int search(int[] arr,int findValue){
         int low = 0;
         int high = arr.length - 1;
-        while (low < high){
+        while (low <= high){
             int mid = (low + high) / 2;
             if (arr[mid] == findValue){
                 return mid;

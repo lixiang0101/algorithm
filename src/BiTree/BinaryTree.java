@@ -1,5 +1,8 @@
 package BiTree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class BinaryTree {
     public static void main(String[] args) {
         HeroNode h1 = new HeroNode(1,"宋江");
@@ -12,12 +15,16 @@ public class BinaryTree {
         h1.setLeft(h3);
         h1.setRight(h2);
         h2.setRight(h4);
-
+        System.out.println("二叉树的层次遍历：");
+        biTree.levelTraverse();
+        System.out.println("---------------------");
         biTree.postOrderTraverse();
 
         biTree.preOrderDelete(3);
 
         biTree.postOrderTraverse();
+
+
     }
 }
 
@@ -49,6 +56,25 @@ class HeroBiTree{
     public void postOrderTraverse(){
         if (this.t != null){
             this.t.postOrder();
+        }
+    }
+
+    /**
+     * 二叉树的水平层次遍历
+     * 借助队列
+     */
+    public void levelTraverse(){
+        LinkedList<HeroNode> queue = new LinkedList<>();
+        queue.offer(t);
+        while (!queue.isEmpty()){
+            HeroNode tmp = queue.poll();
+            System.out.println(tmp);
+            if (tmp.getLeft() != null) {
+                queue.offer(tmp.getLeft());
+            }
+            if (tmp.getRight() != null) {
+                queue.offer(tmp.getRight());
+            }
         }
     }
 
